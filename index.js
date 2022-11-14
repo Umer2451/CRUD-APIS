@@ -13,8 +13,8 @@ app.get('/', (request, response) => {
 
 app.get('/testdb', async(request, response) => {
     let res = await pool.query('select * from public.todoList')
-    console.log(response);
-    //response.json({info : res.rows})
+    //console.log(response);
+    response.json({info : res.rows})
 })
 
 
@@ -88,5 +88,6 @@ app.get('/count', async (req,res)=>{
   response.json({ total: sum.rows})
 })
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`)
 })
+
