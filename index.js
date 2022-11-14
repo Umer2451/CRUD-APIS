@@ -77,16 +77,35 @@ app.get('/pending', async(request,response) => {
     //Do something
 })
 
+// app.get('/count', async (req,res)=>{
+//   let sum = await pool.query(`select count(*) as total,
+//    ount(done) filter (where done = 'true') as Done,
+//    count(done) filter (where done = 'false') as Pending
+//    from public.todolist `)
+//   res.json({todo: result.rows})
+//   res.parse(result.rows)
+
+//   response.json({ total: sum.rows})
+// })
+
 app.get('/count', async (req,res)=>{
-  let sum = await pool.query(`select count(*) as total,
+  let result = await pool.query(`select count(*) as total,
    count(done) filter (where done = 'true') as Done,
    count(done) filter (where done = 'false') as Pending
    from public.todolist `)
-  //res.json({todo: result.rows})
-  //res.parse(result.rows)
+   //res.json({todo: result.rows})
 
-  response.json({ total: sum.rows})
+  //res.parse(result.rows)
+  
+  //var b = result.rows
+  ///var a= JSON.stringify(b)
+  //res.send(a)
+  //console.log(result)
+  var answer = result.rows
+  console.log(`${JSON.stringify(result.rows, '', 2)}`);
+
 })
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
