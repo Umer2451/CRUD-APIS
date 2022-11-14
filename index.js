@@ -88,7 +88,7 @@ app.get('/pending', async(request,response) => {
 //   response.json({ total: sum.rows})
 // })
 
-app.get('/count', async (req,res)=>{
+app.get('/count', async (request,response)=>{
   let result = await pool.query(`select count(*) as total,
    count(done) filter (where done = 'true') as Done,
    count(done) filter (where done = 'false') as Pending
@@ -101,8 +101,10 @@ app.get('/count', async (req,res)=>{
   ///var a= JSON.stringify(b)
   //res.send(a)
   //console.log(result)
-  var answer = result.rows
-  console.log(`${JSON.stringify(result.rows, '', 2)}`);
+  var answer = result.rows[0]
+  console.log(`${JSON.stringify(result.rows[0], '{}', 2)}`);
+  truth = `${JSON.stringify(result.rows[0])}`
+  response.json(truth)
 
 })
 
