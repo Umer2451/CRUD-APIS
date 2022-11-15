@@ -55,6 +55,23 @@ class TodoController{
         console.log(`${JSON.stringify(res.rows[0], '{}', 2)}`);
 
     }
+
+    async BasicAuth(request, response){
+        const todoRepo = new TodoRepo();
+        let res = await todoRepo.getBasicAuth()
+
+        if(response.body.basic_token == 'dW1lcjp1bWVy'){
+            next()
+        }
+        
+        else {
+            response(404)
+        }
+
+        response.json({
+            "status" : "lol"
+        })
+    }
 }
 
 module.exports = TodoController

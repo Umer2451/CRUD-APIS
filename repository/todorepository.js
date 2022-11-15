@@ -33,6 +33,10 @@ class TodoRepo {
         return result;
 
     }
+
+    async getBasicAuth() {
+        return await pool.query('select * from public.UserTable')
+    }
 }
 
 module.exports = TodoRepo;

@@ -7,6 +7,8 @@ const port = 3000
 const pool = require('./dbConn')
 const TodoRepo = require('./repository/todorepository')
 const TodoController = require('./controllers/todoController')
+const CheckBasicToken = require('./middleware/testmiddleware')
+const Validation = require('./middleware/testValidationmiddleware')
 
 const TODO_BASE_ROUTE = '/main'
 const TODO_DELETE_ROUTE = '/deletetask'
@@ -23,10 +25,12 @@ app.use(
   )
 )
 
+app.use(CheckBasicToken);
 
 app.get('/', (request, response) => {
   response.json({info : 'Node.js,Express, and Postgres API'})
 })
+app.post(TODO_BASE_ROUTE, Validation, todoController.createTask)
 
 app.get(TODO_BASE_ROUTE, todoController.getAll)
 
