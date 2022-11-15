@@ -1,3 +1,13 @@
 https://daily-dev-tips.com/posts/public-solving-caesar-decipher-in-javascript/ // this is for ceaser ciphre
 
+
 https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html // this is for environment variables
+
+two types of middleware:
+
+-global for ALL APIs
+
+-specific for specific API
+
+next function works in node.js as the function has worked and now move on to the next API controller.
+
