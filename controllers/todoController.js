@@ -48,12 +48,9 @@ class TodoController{
         const todoRepo = new TodoRepo();
         let res = await todoRepo.TS()
 
-        response.json({
-            "status" : "check console"
-        })
+        response.send(res.rows[0])
 
         console.log(`${JSON.stringify(res.rows[0], '{}', 2)}`);
-
     }
 
     async BasicAuth(request, response){
